@@ -1,0 +1,158 @@
+{%  extends 'layout.html' %}
+
+{% block body %}
+
+<div class="right_col" role="main">
+
+    <div class="row">
+        <!-- Outlets Start -->
+        <div class="col-md-2 col-sm-12 col-xs-12">
+            <!-- Outlet Heading -->
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_title">
+                    <h2>Outlets </h2>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+            <!-- End Outlet Heading -->
+
+            <!-- start of power center widget -->
+            <div class="col-md-12 col-sm-6 col-xs-12">
+                <div class="x_panel">
+                    <div class="x_title">
+                        <h2>Power Center </h2>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+                        <div class="">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- end power center widget -->
+
+
+        </div>
+        <!-- Outlets End -->
+
+        <!-- Sensors Start -->
+        <div class="col-md-6 col-sm-12 col-xs-12">
+
+            <!-- Start Sensors Heading -->
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_title">
+                    <h2>Sensors </h2>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+            <!-- End Sensors Heading -->
+
+            <!-- start of Temperature widget -->
+            <div class="col-md-4 col-sm-6 col-xs-12">
+                <div class="x_panel">
+                    <div class="x_title">
+                        <h2>Temperature </h2>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+                        <h1 align="center"><i class="fa fa-thermometer-full"></i> <span id="tempprobe_1_temp">0*</span></h1>
+                    </div>
+                </div>
+            </div>
+            <!-- end Temperature widget -->
+
+            <!-- start of Salinity widget -->
+            <div class="col-md-4 col-sm-6 col-xs-12">
+                <div class="x_panel">
+                    <div class="x_title">
+                        <h2>Salinity </h2>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+                        <h1 align="center">1.026 SG</h1>
+                    </div>
+                </div>
+            </div>
+            <!-- end Salinity widget -->
+
+            <!-- start of PH widget -->
+            <div class="col-md-4 col-sm-6 col-xs-12">
+                <div class="x_panel">
+                    <div class="x_title">
+                        <h2>pH</h2>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+                        <h1 align="center">8</h1>
+                    </div>
+                </div>
+            </div>
+            <!-- end PH widget -->
+
+            <!-- start of Float Switch widget -->
+            <div class="col-md-4 col-sm-6 col-xs-12">
+                <div class="x_panel">
+                    <div class="x_title">
+                        <h2>Float Switches</h2>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+                        <div id="float_switch_status"><span id="floatsw_msg"></span></div>
+                    </div>
+                </div>
+            </div>
+            <!-- end Float Switch widget -->
+        </div>
+
+        <!-- Start Misc -->
+        <div class="col-md-4 col-sm-12 col-xs-12">
+
+            <!-- Start Misc Heading -->
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_title">
+                    <h2>Misc </h2>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+            <!-- End Misc Heading -->
+
+            <!-- start of camera widget -->
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                    <div class="x_title">
+                        <h2>Camera </h2>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+                        Insert Camera Feed
+                    </div>
+                </div>
+            </div>
+            <!-- end camera widget -->
+
+            <!-- start Notes Widget -->
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                    <div class="x_title">
+                        <h2>Notes of the Day</h2> <h2 id="addNoteSuccess"></h2>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+                        <form id="addNote" method="POST">
+                            <textarea id="notes" name="notes" rows="10" style="min-width: 100%"></textarea>
+                            <button>Add Note Entry</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <!-- end Notes widget -->
+
+        </div>
+        <!-- End Misc Section -->
+    </div>
+
+</div>
+
+{% endblock %}
