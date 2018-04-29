@@ -10,7 +10,7 @@ pb = Pushbullet('o.RuyUUVhDC9HOP7E80jxpKVvfaf4KShvR')
 
 # Create a dictionary for the outlets and their status:
 outlets = {
-    4: {'name': 'Outlet 1', 'state': GPIO.LOW},
+    # 4: {'name': 'Outlet 1', 'state': GPIO.LOW},
     14: {'name': 'Outlet 2', 'state': GPIO.LOW},
     15: {'name': 'Outlet 3', 'state': GPIO.LOW},
     17: {'name': 'Outlet 4', 'state': GPIO.LOW},

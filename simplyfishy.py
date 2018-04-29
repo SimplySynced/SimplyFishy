@@ -1,6 +1,6 @@
-import gpio_control
 from flask import Flask, render_template
 from flask_socketio import SocketIO
+import gpio_control
 from gevent import monkey
 monkey.patch_all()
 
@@ -21,5 +21,9 @@ def index():
 def mymessage(message):
     print('received message: ' + message)
     # emit('my_response', 'test')
+
+
+if __name__ == '__main__':
+    socketio.run(simplyfishy, debug=True, host='0.0.0.0')
 
 
