@@ -18,7 +18,7 @@ outlets = OrderedDict({
     23: {'name': 'Outlet 7', 'state': GPIO.LOW},
     27: {'name': 'Outlet 8', 'state': GPIO.LOW}
 })
-
+outletsOrdered = OrderedDict(sorted(outlets.items(), key=lambda t: t[0]))
 
 # Set each pin as an output and make it low:
 for outlet in outlets:
@@ -38,7 +38,7 @@ def outlet_off(out_num):
     outlets[out_num]['state'] = GPIO.LOW
     print(outlets[out_num]['name'] + " is now off!")
 
-# Create a dictionary for sensors ans their status
+# Create a dictionary for sensors and their status
 float_switches = OrderedDict({
     24: {'name': 'Float Switch 1', 'state': GPIO.LOW},
     25: {'name': 'Float Switch 2', 'state': GPIO.LOW}

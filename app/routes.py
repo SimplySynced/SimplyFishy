@@ -12,13 +12,13 @@ socketio = SocketIO(simplyfishy, async_mode='gevent')
 @simplyfishy.route('/')
 def index():
     # For each pin, read the pin state and store it in the pins dictionary:
-    for outlet in gc.outlets:
-        gc.outlets[outlet]['state'] = GPIO.input(outlet)
+    for outlet in gc.outletsOrdered:
+        gc.outletsOrdered[outlet]['state'] = GPIO.input(outlet)
     for float_switch in gc.float_switches:
         gc.float_switches[float_switch]['state'] = GPIO.input(float_switch)
     # Put the pin dictionary into the template data dictionary:
     outletsData = {
-        'outlets': gc.outlets
+        'outlets': gc.outletsOrdered
     }
     floatswData = {
         'float_switches': gc.float_switches
