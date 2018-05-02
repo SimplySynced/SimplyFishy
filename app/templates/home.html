@@ -25,7 +25,15 @@
                     </div>
                     <div class="x_content">
                         <div class="">
-
+                             {% for outlet in outlets %}
+                             <div style='padding: 5px; float: left'> {{ outlets[outlet].name }}
+                             {% if outlets[outlet].state == true %}
+                                <input type='checkbox' class='js-switch' id='button_".$i."' data-state='1' checked onchange='socket_onoff ({{pin}});'>
+                             {% else %}
+                                <input type='checkbox' class='js-switch' id='button_".$i."' data-state='0' onchange='socket_onoff ({{pin}});'>
+                             {% endif %}
+                             </div>
+                             {% endfor %}
                         </div>
                     </div>
                 </div>
@@ -99,6 +107,15 @@
                         <div class="clearfix"></div>
                     </div>
                     <div class="x_content">
+                        {% for float_switch in float_switches %}
+                             <div id="float_switch_status"> {{ float_switches[float_switch].name }}
+                             {% if float_switches[float_switch].state == true %}
+                                 <span id="floatsw_msg">ATO level is Ok</span>
+                             {% else %}
+                                 <span id="floatsw_msg">ATO level is Low!</span>
+                             {% endif %}
+                             </div>
+                             {% endfor %}
                         <div id="float_switch_status"><span id="floatsw_msg"></span></div>
                     </div>
                 </div>

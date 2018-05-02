@@ -1,5 +1,5 @@
 $(document).ready(function(){
-    //connect to the socket server.
+    //Connect to the socket server.
     var socket = io.connect('http://' + document.domain + ':' + location.port)
     socket.on('connect', function() {
         socket.emit('my_message', 'User connected!');
@@ -11,12 +11,12 @@ $(document).ready(function(){
      });
 
     //Setup interval to check temp every 5 seconds
-    //setInterval(function(){
-    //    socket.emit('read_temp');
-    //}, 5000);
+    setInterval(function(){
+        socket.emit('read_temp');
+    }, 5000);
 
     socket.on('tempprobe_1', function(temp) {
-        $('#tempprobe_1_temp').html('<p>' + temp.data + '</p>');
+        $('#tempprobe_1_temp').html(temp.data);
         console.log(temp.data)
     });
 

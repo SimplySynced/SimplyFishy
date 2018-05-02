@@ -1,4 +1,6 @@
 import RPi.GPIO as GPIO
+import glob
+from app import simplyfishy
 from pushbullet import Pushbullet
 from flask_socketio import emit
 
@@ -51,7 +53,6 @@ for float_switch in float_switches:
 
 # Define callback function for event detection
 def floatsw(channel):
-    from __main__ import simplyfishy
     with simplyfishy.app_context():
         if GPIO.input(channel):
             print(float_switches[channel]['name'] + " deactivated!")
@@ -64,3 +65,8 @@ def floatsw(channel):
 
 GPIO.add_event_detect(24, GPIO.BOTH, callback=floatsw, bouncetime=1000)
 GPIO.add_event_detect(25, GPIO.BOTH, callback=floatsw, bouncetime=1000)
+
+# Setup Temp Probes
+base_dir = '/sys/bus/w1/devices/'
+device_folder = glob.glob(base_dir + '28*')[0]
+device_file = device_folder + '/w1_slave'
