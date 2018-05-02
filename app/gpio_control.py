@@ -8,7 +8,7 @@ from flask_socketio import emit
 GPIO.setmode(GPIO.BCM)
 
 # Set the pushbullet API key
-pb = Pushbullet('***')
+pb = Pushbullet('****')
 
 # Create a dictionary for the outlets and their status:
 outlets = {
