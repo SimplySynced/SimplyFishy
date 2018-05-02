@@ -9,15 +9,16 @@ GPIO.setmode(GPIO.BCM)
 
 # Create a dictionary for the outlets and their status:
 outlets = OrderedDict({
-    # 4:  {'name': 'Outlet 1', 'state': 3},
-    14: {'name': 'Outlet 2', 'state': 3},
-    15: {'name': 'Outlet 3', 'state': 3},
-    17: {'name': 'Outlet 4', 'state': 3},
-    18: {'name': 'Outlet 5', 'state': 3},
-    27: {'name': 'Outlet 6', 'state': 3},
-    22: {'name': 'Outlet 7', 'state': 3},
-    23: {'name': 'Outlet 8', 'state': 3}
+    # 4: {'name': 'Outlet 1', 'state': GPIO.LOW},
+    14: {'name': 'Outlet 2', 'state': GPIO.LOW},
+    15: {'name': 'Outlet 3', 'state': GPIO.LOW},
+    17: {'name': 'Outlet 4', 'state': GPIO.LOW},
+    18: {'name': 'Outlet 5', 'state': GPIO.LOW},
+    22: {'name': 'Outlet 6', 'state': GPIO.LOW},
+    23: {'name': 'Outlet 7', 'state': GPIO.LOW},
+    27: {'name': 'Outlet 8', 'state': GPIO.LOW}
 })
+
 
 # Set each pin as an output and make it low:
 for outlet in outlets:
