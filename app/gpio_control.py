@@ -8,7 +8,7 @@ from flask_socketio import emit
 GPIO.setmode(GPIO.BCM)
 
 # Set the pushbullet API key
-pb = Pushbullet('o.RuyUUVhDC9HOP7E80jxpKVvfaf4KShvR')
+pb = Pushbullet('***')
 
 # Create a dictionary for the outlets and their status:
 outlets = {
@@ -56,7 +56,7 @@ def floatsw(channel):
     with simplyfishy.app_context():
         if GPIO.input(channel):
             print(float_switches[channel]['name'] + " deactivated!")
-            emit('float_sw', {'msg': 'ATO level is Ok.'}, namespace='/', broadcast=True)
+            emit('float_sw', {'data': 'ATO level is Ok.'}, namespace='/', broadcast=True)
         else:
             print(float_switches[channel]['name'] + " activated!")
             # pb.push_note("Simply Fishy", "Sump water level is low")
