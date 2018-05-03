@@ -1,5 +1,4 @@
 import RPi.GPIO as GPIO
-import time
 from flask import render_template
 from flask_socketio import SocketIO, emit
 from app import simplyfishy
@@ -66,10 +65,12 @@ def mymessage(message):
     print('received message: ' + message)
     # emit('my_response', 'test')
 
+
 @socketio.on('read_temp')
 def return_temp():
     print(read_temp())
     emit('tempprobe_1', {'data': read_temp()}, namespace='/', broadcast=True)
+
 
 def read_temp_raw():
     f = open(gc.device_file, 'r')
@@ -77,11 +78,9 @@ def read_temp_raw():
     f.close()
     return lines
 
+
 def read_temp():
     lines = read_temp_raw()
-    while lines[0].strip()[-3:] != 'YES':
-        time.sleep(0.2)
-        lines = read_temp_raw()
     equals_pos = lines[1].find('t=')
     if equals_pos != -1:
         temp_string = lines[1][equals_pos + 2:]

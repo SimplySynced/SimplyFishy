@@ -1,6 +1,7 @@
 import RPi.GPIO as GPIO
 import glob
 from app import simplyfishy
+from app import notifications as n
 from flask_socketio import emit
 from collections import OrderedDict
 
@@ -54,9 +55,11 @@ def floatsw(channel):
     with simplyfishy.app_context():
         if GPIO.input(channel):
             print(float_switches[channel]['name'] + " deactivated!")
+            n.send('ATO level is now Ok')
             emit('float_sw', {'data': 'ATO level is Ok.'}, namespace='/', broadcast=True)
         else:
             print(float_switches[channel]['name'] + " activated!")
+            n.send('ATO level is low')
             emit('float_sw', {'data': 'ATO water level is low!'}, namespace='/', broadcast=True)
 
 
