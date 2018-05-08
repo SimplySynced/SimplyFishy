@@ -1,5 +1,5 @@
 
 class Config(object):
     # ...
-    SQLALCHEMY_DATABASE_URI = 'mysql://simplyfishy:f15hy@localhost/simplyfishy'
+    SQLALCHEMY_DATABASE_URI = 'dburi'
     SQLALCHEMY_TRACK_MODIFICATIONS = False
