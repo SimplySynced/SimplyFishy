@@ -68,7 +68,7 @@ def mymessage(message):
 
 @socketio.on('read_temp')
 def return_temp():
-    print(read_temp())
+    # print(read_temp())
     emit('tempprobe_1', {'data': read_temp()}, namespace='/', broadcast=True)
 
 
