@@ -63,8 +63,8 @@ def floatsw(channel):
             emit('float_sw', {'data': 'ATO water level is low!'}, namespace='/', broadcast=True)
 
 
-GPIO.add_event_detect(24, GPIO.BOTH, callback=floatsw, bouncetime=1000)
-GPIO.add_event_detect(25, GPIO.BOTH, callback=floatsw, bouncetime=1000)
+GPIO.add_event_detect(24, GPIO.BOTH, callback=floatsw, bouncetime=60000)
+GPIO.add_event_detect(25, GPIO.BOTH, callback=floatsw, bouncetime=60000)
 
 # Setup Temp Probes
 base_dir = '/sys/bus/w1/devices/'

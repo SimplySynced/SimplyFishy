@@ -24,4 +24,4 @@ class Settings(db.Model):
     setting_value = db.Column(db.String(100), index=True, unique=True)
 
     def __repr__(self):
-        return '<Settings {}>'.format(self.setting_name)
+        return '<Settings {}>'.format(self.setting_name, self.setting_value)

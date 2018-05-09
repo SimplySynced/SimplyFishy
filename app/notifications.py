@@ -1,15 +1,18 @@
 from pushbullet import Pushbullet
 from twilio.rest import Client
 from gevent import sleep
+from app.models import Settings
+
+pb_api = Settings.query.filter_by(setting_name='pushbullet_api').one()
+tas = Settings.query.filter_by(setting_name='twilio_account_sid').one()
+tat = Settings.query.filter_by(setting_name='twilio_auth_token').one()
 
 # Set the pushbullet API key
-pb = Pushbullet('pbid')
+pb = Pushbullet(pb_api.setting_value)
+
 
 # Set the Twilio API Authentication
-account_sid = "asid"
-auth_token = "auth"
-
-twil = Client(account_sid, auth_token)
+twil = Client(tas.setting_value, tat.setting_value)
 
 
 def send(msg):
@@ -29,10 +32,12 @@ def pushbullet(msg):
 
 
 def twilio(msg):
+    twilto = Settings.query.filter_by(setting_name='twilio_to_num').one()
+    twilfrom = Settings.query.filter_by(setting_name='twilio_from_num').one()
 
     message = twil.messages.create(
-        to="twilto",
-        from_="twilfrom",
+        to=twilto,
+        from_=twilfrom,
         body=msg
     )
 
