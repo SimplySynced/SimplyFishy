@@ -36,8 +36,8 @@ def twilio(msg):
     twilfrom = Settings.query.filter_by(setting_name='twilio_from_num').one()
 
     message = twil.messages.create(
-        to=twilto,
-        from_=twilfrom,
+        to=twilto.setting_value,
+        from_=twilfrom.setting_value,
         body=msg
     )
 
