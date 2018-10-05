@@ -1,0 +1,114 @@
+{%  extends 'layout.html' %}
+
+{% block body %}
+
+<div class="top_nav">
+    <div class="nav_menu">
+        <nav>
+            <div class="nav toggle">
+                <a id="menu_toggle"><i class="fa fa-bars"></i></a>
+            </div>
+
+            <ul class="nav navbar-nav navbar-right">
+                <li class="">
+                    <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                        <span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Settings
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</div>
+
+<div class="right_col" role="main">
+
+    <div class="row">
+        <!-- Outlets Start -->
+        <div class="col-md-4 col-sm-12 col-xs-12">
+
+            <!-- start of power center widget -->
+            <div class="col-md-12 col-sm-6 col-xs-12">
+                <div class="x_panel">
+                    <div class="x_title">
+                        <h2>Notifications </h2>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+                        <div class="">
+                               <p>{{ settings.pushbullet_api.setting_value }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- end power center widget -->
+
+        </div>
+        <!-- Outlets End -->
+
+        <!-- Sensors Start -->
+        <div class="col-md-4 col-sm-12 col-xs-12">
+            <div class="x_panel">
+                <div class="x_title">
+                    <h2>Block 2 </h2>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+                    <div class="">
+                        Block 2
+                    </div>
+                </div>
+            </div>
+            <!-- End Sensors Heading -->
+        </div>
+
+        <!-- Start Misc -->
+        <div class="col-md-4 col-sm-12 col-xs-12">
+
+            <!-- Start Misc Heading -->
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_title">
+                    <h2>Misc </h2>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+            <!-- End Misc Heading -->
+
+            <!-- start of camera widget -->
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                    <div class="x_title">
+                        <h2>Camera </h2>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+                        Insert Camera Feed
+                    </div>
+                </div>
+            </div>
+            <!-- end camera widget -->
+
+            <!-- start Notes Widget -->
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                    <div class="x_title">
+                        <h2>Note Entry</h2> <h2 id="addNoteSuccess"></h2>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+                        <form id="addNote" method="POST">
+                            <textarea id="notes" name="notes" rows="10" style="min-width: 100%"></textarea>
+                            <button>Add Note Entry</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <!-- end Notes widget -->
+
+        </div>
+        <!-- End Misc Section -->
+    </div>
+
+</div>
+
+{% endblock %}

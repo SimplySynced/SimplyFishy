@@ -2,6 +2,24 @@
 
 {% block body %}
 
+<div class="top_nav">
+    <div class="nav_menu">
+        <nav>
+            <div class="nav toggle">
+                <a id="menu_toggle"><i class="fa fa-bars"></i></a>
+            </div>
+
+            <ul class="nav navbar-nav navbar-right">
+                <li class="">
+                    <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                        <span class="glyphicon glyphicon-home" aria-hidden="true"></span> Tank Home
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</div>
+
 <div class="right_col" role="main">
 
     <div class="row">
@@ -28,9 +46,9 @@
                              {% for outlet in outlets %}
                              <div style='padding: 5px; float: left'> {{ outlets[outlet].name }}
                              {% if outlets[outlet].state == true %}
-                                <input type='checkbox' class='js-switch' id='button_".$i."' data-state='1' checked onchange='socket_onoff ({{pin}});'>
+                                <input type='checkbox' class='js-switch' id='button_{{ outlet }}'  data-state='1' checked onchange='socket_onoff({{ outlet }});'>
                              {% else %}
-                                <input type='checkbox' class='js-switch' id='button_".$i."' data-state='0' onchange='socket_onoff ({{pin}});'>
+                                <input type='checkbox' class='js-switch' id='button_{{ outlet }}' data-state='0' onchange='socket_onoff({{ outlet }});'>
                              {% endif %}
                              </div>
                              {% endfor %}
@@ -110,13 +128,12 @@
                         {% for float_switch in float_switches %}
                              <div id="float_switch_status">
                              {% if float_switches[float_switch].state == true %}
-                                 <span id="floatsw_msg">ATO level is Ok</span>
+                                 <span id="floatsw_msg_{{ float_switch }}">ATO level is Ok</span>
                              {% else %}
-                                 <span id="floatsw_msg">ATO level is Low!</span>
+                                 <span id="floatsw_msg_{{ float_switch }}">ATO level is Low!</span>
                              {% endif %}
                              </div>
-                             {% endfor %}
-                        <div id="float_switch_status"><span id="floatsw_msg"></span></div>
+                        {% endfor %}
                     </div>
                 </div>
             </div>

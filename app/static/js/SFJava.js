@@ -6,8 +6,8 @@ $(document).ready(function(){
     });
 
     socket.on('float_sw', function(msg) {
-         $('#floatsw_msg').html('<p>' + msg.data + '</p>');
-         console.log(msg.data)
+         $('#floatsw_msg_'+msg.pin).html('<span>' + msg.data + '</span>');
+         //console.log(msg.data + msg.pin)
      });
 
     //Setup interval to check temp every 5 seconds
@@ -17,10 +17,26 @@ $(document).ready(function(){
 
     socket.on('tempprobe_1', function(temp) {
         $('#tempprobe_1_temp').html(temp.data);
-        console.log(temp.data)
+        //console.log(temp.data)
     });
 
 });
+
+function socket_onoff ( socket ) {
+
+	var onOff = $('#button_'+socket).data('state');
+	console.log(onOff);
+
+	if (onOff=='0') {
+		$.get("/"+socket+"/on");
+		$('#button_'+socket).data('state', '1');
+	}
+	else if (onOff=='1') {
+		$.get("/"+socket+"/off");
+		$('#button_'+socket).data('state', '0');
+	}
+
+}
 
 function addNoteData() {
 
@@ -41,7 +57,7 @@ function addNoteData() {
 
 }
 
-function deleteNote( id ) {
+function deleteNote(id) {
 
     console.log(id);
 
@@ -66,4 +82,3 @@ function addTest() {
             });
     });
 }
-;

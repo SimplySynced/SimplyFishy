@@ -1,7 +1,8 @@
 from pushbullet import Pushbullet
 from twilio.rest import Client
-from gevent import sleep
 from app.models import Settings
+from gevent import monkey
+monkey.patch_all()
 
 pb_api = Settings.query.filter_by(setting_name='pushbullet_api').one()
 tas = Settings.query.filter_by(setting_name='twilio_account_sid').one()
@@ -18,12 +19,12 @@ twil = Client(tas.setting_value, tat.setting_value)
 def send(msg):
 
     # Send to Pushbullet
-    pushbullet(msg)
-
-    sleep(5)
+    if Settings.query.filter_by(setting_name='pushbullet_enabled').one()==0:
+        pushbullet(msg)
 
     # Send to Twilio
-    twilio(msg)
+    if Settings.query.filter_by(setting_name='twilio_enabled').one()==0:
+        twilio(msg)
 
 
 def pushbullet(msg):
