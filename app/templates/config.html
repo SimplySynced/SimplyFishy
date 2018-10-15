@@ -21,21 +21,58 @@
 </div>
 
 <div class="right_col" role="main">
-
+<form id="configuration" class="form-horizontal form-label-left" method="post" action="./config/update">
     <div class="row">
         <!-- Outlets Start -->
         <div class="col-md-4 col-sm-12 col-xs-12">
 
             <!-- start of power center widget -->
-            <div class="col-md-12 col-sm-6 col-xs-12">
+            <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                     <div class="x_title">
                         <h2>Notifications </h2>
                         <div class="clearfix"></div>
                     </div>
                     <div class="x_content">
-                        <div class="">
-                               <p>{{ settings.pushbullet_api.setting_value }}</p>
+                        <h2>Pushbullet</h2>
+                        <div class="form-group">
+                            <label class="control-label col-sm-12 col-md-12 col-lg-4">Pushbullet Enabled: </label>
+                            <div class="col-sm-8 col-md-8 col-lg-8">
+                                {% if pushbullet_enabled == '1' %}
+                                   <input type='checkbox' class='js-switch' name='pushbullet_enabled'  data-state='1' checked>
+                                {% else %}
+                                   <input type='checkbox' class='js-switch' name='pushbullet_enabled' data-state='0'>
+                                {% endif %}
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-sm-12 col-md-12 col-lg-4">Pushbullet API: </label>
+                            <div class="col-sm-8 col-md-8 col-lg-8">
+                                <input type="text" class="form-control" name="pushbullet_api" value="{{ pushbullet_api }}">
+                            </div>
+                        </div>
+                        <h2>Twilio</h2>
+                        <div class="form-group">
+                            <label class="control-label col-sm-12 col-md-12 col-lg-4">Twilio Enabled: </label>
+                            <div class="col-sm-8 col-md-8 col-lg-8">
+                                {% if pushbullet_enabled == '1' %}
+                                   <input type='checkbox' class='js-switch' name='twilio_enabled'  data-state='1' checked>
+                                {% else %}
+                                   <input type='checkbox' class='js-switch' name='twilio_enabled' data-state='0'>
+                                {% endif %}
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-sm-12 col-md-12 col-lg-4">Twilio Account SID: </label>
+                            <div class="col-sm-8 col-md-8 col-lg-8">
+                                <input type="text" class="form-control col-sm-8 col-md-8 col-lg-8" value="{{ twilio_account_sid }}">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-sm-12 col-md-12 col-lg-4">Twilio Auth Token: </label>
+                            <div class="col-sm-8 col-md-8 col-lg-8">
+                                <input type="text" class="form-control col-sm-8 col-md-8 col-lg-8" value="{{ twilio_auth_token }}">
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -65,50 +102,25 @@
         <!-- Start Misc -->
         <div class="col-md-4 col-sm-12 col-xs-12">
 
-            <!-- Start Misc Heading -->
-            <div class="col-md-12 col-sm-12 col-xs-12">
-                <div class="x_title">
-                    <h2>Misc </h2>
-                    <div class="clearfix"></div>
-                </div>
-            </div>
-            <!-- End Misc Heading -->
-
             <!-- start of camera widget -->
             <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                     <div class="x_title">
-                        <h2>Camera </h2>
+                        <h2>Block 3 </h2>
                         <div class="clearfix"></div>
                     </div>
                     <div class="x_content">
-                        Insert Camera Feed
+                        Settings
                     </div>
                 </div>
             </div>
             <!-- end camera widget -->
 
-            <!-- start Notes Widget -->
-            <div class="col-md-12 col-sm-12 col-xs-12">
-                <div class="x_panel">
-                    <div class="x_title">
-                        <h2>Note Entry</h2> <h2 id="addNoteSuccess"></h2>
-                        <div class="clearfix"></div>
-                    </div>
-                    <div class="x_content">
-                        <form id="addNote" method="POST">
-                            <textarea id="notes" name="notes" rows="10" style="min-width: 100%"></textarea>
-                            <button>Add Note Entry</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-            <!-- end Notes widget -->
-
         </div>
         <!-- End Misc Section -->
     </div>
-
+    <input type="submit" value="update">
+</form>
 </div>
 
 {% endblock %}
