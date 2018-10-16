@@ -12,36 +12,43 @@
             <ul class="nav navbar-nav navbar-right">
                 <li class="">
                     <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                        <span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Settings
+                        <span class="glyphicon glyphicon-home" aria-hidden="true"></span> Tank Home
                     </a>
                 </li>
             </ul>
         </nav>
     </div>
 </div>
-
+<form id="configuration" class="form-horizontal form-label-left" method="POST" action="/config/update">
 <div class="right_col" role="main">
-<form id="configuration" class="form-horizontal form-label-left" method="post" action="./config/update">
-    <div class="row">
-        <!-- Outlets Start -->
-        <div class="col-md-4 col-sm-12 col-xs-12">
 
-            <!-- start of power center widget -->
+    <div class="row">
+        <!-- Notifications Start -->
+        <div class="col-md-4 col-sm-12 col-xs-12">
+            <!-- Notifications Heading -->
             <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_title">
+                    <h2>Notifications </h2>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+            <!-- End Outlet Heading -->
+
+            <!-- start of Pushbullet widget -->
+            <div class="col-md-12 col-sm-6 col-xs-12">
                 <div class="x_panel">
                     <div class="x_title">
-                        <h2>Notifications </h2>
+                        <h2>Pushbullet </h2>
                         <div class="clearfix"></div>
                     </div>
                     <div class="x_content">
-                        <h2>Pushbullet</h2>
                         <div class="form-group">
                             <label class="control-label col-sm-12 col-md-12 col-lg-4">Pushbullet Enabled: </label>
                             <div class="col-sm-8 col-md-8 col-lg-8">
                                 {% if pushbullet_enabled == '1' %}
-                                   <input type='checkbox' class='js-switch' name='pushbullet_enabled'  data-state='1' checked>
+                                   <input type='checkbox' name='pushbullet_enabled' checked>
                                 {% else %}
-                                   <input type='checkbox' class='js-switch' name='pushbullet_enabled' data-state='0'>
+                                   <input type='checkbox' name='pushbullet_enabled'>
                                 {% endif %}
                             </div>
                         </div>
@@ -51,76 +58,132 @@
                                 <input type="text" class="form-control" name="pushbullet_api" value="{{ pushbullet_api }}">
                             </div>
                         </div>
-                        <h2>Twilio</h2>
+                    </div>
+                </div>
+            </div>
+            <!-- end Pushbullet widget -->
+            <!-- start of Twilio widget -->
+            <div class="col-md-12 col-sm-6 col-xs-12">
+                <div class="x_panel">
+                    <div class="x_title">
+                        <h2>Twilio </h2>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
                         <div class="form-group">
                             <label class="control-label col-sm-12 col-md-12 col-lg-4">Twilio Enabled: </label>
                             <div class="col-sm-8 col-md-8 col-lg-8">
-                                {% if pushbullet_enabled == '1' %}
-                                   <input type='checkbox' class='js-switch' name='twilio_enabled'  data-state='1' checked>
+                                {% if twilio_enabled == '1' %}
+                                   <input type='checkbox' name='twilio_enabled' checked>
                                 {% else %}
-                                   <input type='checkbox' class='js-switch' name='twilio_enabled' data-state='0'>
+                                   <input type='checkbox' name='twilio_enabled'>
                                 {% endif %}
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="control-label col-sm-12 col-md-12 col-lg-4">Twilio Account SID: </label>
                             <div class="col-sm-8 col-md-8 col-lg-8">
-                                <input type="text" class="form-control col-sm-8 col-md-8 col-lg-8" value="{{ twilio_account_sid }}">
+                                <input type="text" name="twilio_account_sid" class="form-control col-sm-8 col-md-8 col-lg-8" value="{{ twilio_account_sid }}">
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="control-label col-sm-12 col-md-12 col-lg-4">Twilio Auth Token: </label>
                             <div class="col-sm-8 col-md-8 col-lg-8">
-                                <input type="text" class="form-control col-sm-8 col-md-8 col-lg-8" value="{{ twilio_auth_token }}">
+                                <input type="text" name="twilio_auth_token" class="form-control col-sm-8 col-md-8 col-lg-8" value="{{ twilio_auth_token }}">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-sm-12 col-md-12 col-lg-4">Twilio From Number: </label>
+                            <div class="col-sm-8 col-md-8 col-lg-8">
+                                <input type="text" name="twilio_from_num" class="form-control col-sm-8 col-md-8 col-lg-8" value="{{ twilio_from_num }}">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-sm-12 col-md-12 col-lg-4">Twilio To Number: </label>
+                            <div class="col-sm-8 col-md-8 col-lg-8">
+                                <input type="text" name="twilio_to_num" class="form-control col-sm-8 col-md-8 col-lg-8" value="{{ twilio_to_num }}">
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-
-            <!-- end power center widget -->
-
+            <!-- end Twilio widget -->
         </div>
-        <!-- Outlets End -->
+        <!-- Notifications End -->
 
         <!-- Sensors Start -->
         <div class="col-md-4 col-sm-12 col-xs-12">
-            <div class="x_panel">
+
+            <!-- Start Sensors Heading -->
+            <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_title">
-                    <h2>Block 2 </h2>
+                    <h2>Future Use </h2>
                     <div class="clearfix"></div>
-                </div>
-                <div class="x_content">
-                    <div class="">
-                        Block 2
-                    </div>
                 </div>
             </div>
             <!-- End Sensors Heading -->
+
+            <!-- start of Temperature widget -->
+            <div class="col-md-4 col-sm-6 col-xs-12">
+                <div class="x_panel">
+                    <div class="x_title">
+                        <h2>Future </h2>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+                       Future
+                    </div>
+                </div>
+            </div>
+            <!-- end Temperature widget -->
+
         </div>
 
         <!-- Start Misc -->
         <div class="col-md-4 col-sm-12 col-xs-12">
 
+            <!-- Start Misc Heading -->
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_title">
+                    <h2>Misc </h2>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+            <!-- End Misc Heading -->
+
             <!-- start of camera widget -->
             <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                     <div class="x_title">
-                        <h2>Block 3 </h2>
+                        <h2>Future Use </h2>
                         <div class="clearfix"></div>
                     </div>
                     <div class="x_content">
-                        Settings
+                        Future Use
                     </div>
                 </div>
             </div>
             <!-- end camera widget -->
 
+            <!-- start Notes Widget -->
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                    <div class="x_title">
+                        <h2>Note Entry</h2> <h2 id="addNoteSuccess"></h2>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+
+                    </div>
+                </div>
+            </div>
+            <!-- end Notes widget -->
+
         </div>
         <!-- End Misc Section -->
     </div>
-    <input type="submit" value="update">
-</form>
+    <input type="submit" value="Update">
 </div>
+</form>
 
 {% endblock %}

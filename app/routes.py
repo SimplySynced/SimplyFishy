@@ -1,7 +1,8 @@
 import RPi.GPIO as GPIO
-from flask import render_template, request
+from flask import render_template, request, redirect
 from flask_socketio import SocketIO, emit
 from app import simplyfishy
+from app import db
 from app import gpio_control as gc
 from app.models import Settings
 
@@ -35,12 +36,12 @@ def config():
 
 @simplyfishy.route('/config/update', methods=["POST"])
 def update():
-    # pushbullet_enabled = request.form.get("pushbullet_enabled")
-    pushbullet_api = request.form.get("pushbullet_api")
-    settings = Settings.query.all()
-    settings.setting_value[pushbullet_api] = pushbullet_api
-    db.session.commit()
-    return "/config"
+    items = request.form.items()
+    for setting_name, setting_value in items:
+        setting = Settings.query.filter_by(setting_name=setting_name).first()
+        setting.setting_value = setting_value
+        db.session.commit()
+    return redirect ("/config")
 
 @simplyfishy.route("/<changePin>/<action>")
 def action(changePin, action):
